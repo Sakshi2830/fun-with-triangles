@@ -1,11 +1,11 @@
-const base = document.querySelector('#base');
-const height = document.querySelector('#height');
-const calculateButton = document.querySelector('#calculate-button');
-const outputEl = document.querySelector('#output');
+const base = document.querySelector("#base");
+const height = document.querySelector("#height");
+const calculateButton = document.querySelector("#calculate-button");
+const message = document.querySelector("#error-message");
 
-outputEl.style.display = "none";
+hideMessage();
 
-calculateButton.addEventListener("click" , function measureSide(){
+calculateButton.addEventListener("click", function measureSide() {
     if (base.value && height.value) {
         if (base.value > 0 && base.value > 0) {
             calculateArea();
@@ -17,6 +17,18 @@ calculateButton.addEventListener("click" , function measureSide(){
     }
 
 })
-function calculateArea(){
-    
+
+function calculateArea() {
+    const area = (0.5 * (base.value) * (height.value)).toFixed(2);
+    showMessage("The area of this triangle is: " + area);
+
+}
+
+function showMessage(msg) {
+    message.style.display = "block";
+    message.innerHTML = msg;
+}
+
+function hideMessage() {
+    message.style.display = "none";
 }
